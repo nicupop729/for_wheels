@@ -1,7 +1,14 @@
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
+import { useDispatch } from 'react-redux';
 import './App.css';
+import { getCars } from './redux/cars/car';
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getCars());
+  });
   return (
     <div className="App">
       <header className="App-header">
