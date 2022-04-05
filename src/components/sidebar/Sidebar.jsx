@@ -5,20 +5,24 @@ import { FaRegWindowClose } from 'react-icons/fa';
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const toggleSidebarHandler = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <>
       {!isOpen ? (
         <button
-          className="fixed  z-30 flex items-center cursor-pointer left-10 top-6"
+          className="fixed z-30 flex items-center cursor-pointer top-4 left-4 space-y-2"
           type="button"
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => toggleSidebarHandler()}
         >
           <svg
-            onClick={() => setIsOpen(!isOpen)}
-            fill="#2563eb"
+            onClick={() => toggleSidebarHandler()}
+            fill="#2563EB"
             viewBox="0 0 100 80"
-            width="40"
-            height="40"
+            width="30"
+            height="30"
           >
             <rect width="100" height="10" />
             <rect y="30" width="100" height="10" />
@@ -29,28 +33,35 @@ const Sidebar = () => {
         <button
           type="button"
           className="text-xl text-white fixed top-4 left-4 z-10"
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => toggleSidebarHandler()}
         >
           <FaRegWindowClose />
         </button>
       )}
       <div
-        className={`top-0 left-0 w-[25vw] bg-blue-600  p-10 text-white fixed h-full ${
+        className={`top-0 left-0 w-[70vw] bg-blue-600  p-10 text-white fixed h-full ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         } ease-in-out duration-300`}
       >
-        <h2 className="mt-20 text-4xl font-semibold text-white">Navigation</h2>
-
-        <nav>
+        <nav className="mt-20 text-1xl font-semibold text-white">
           <ul>
             <li>
-              <NavLink to="/">Cars</NavLink>
+              <NavLink to="/" onClick={() => toggleSidebarHandler()}>
+                Cars
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/reserve">Reserve</NavLink>
+              <NavLink to="/reserve" onClick={() => toggleSidebarHandler()}>
+                Reserve
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/my_reservations">My Reservations</NavLink>
+              <NavLink
+                to="/my_reservations"
+                onClick={() => toggleSidebarHandler()}
+              >
+                My Reservations
+              </NavLink>
             </li>
           </ul>
         </nav>

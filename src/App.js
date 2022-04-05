@@ -17,7 +17,7 @@ const App = () => {
   return (
     <div className="mx-auto mt-8">
       <Sidebar />
-      <main className="text-4xl text-center ml-[35vw]">
+      <main className="text-4xl text-center ml-[10vw]">
         <Routes>
           <Route path="/" element={<Cars />} />
           <Route path="/reserve" element={<Reserve />} />
