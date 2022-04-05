@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { FaRegWindowClose } from 'react-icons/fa';
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,34 +31,26 @@ const Sidebar = () => {
           className="text-xl text-white fixed top-4 left-4 z-10"
           onClick={() => setIsOpen(!isOpen)}
         >
-          X
+          <FaRegWindowClose />
         </button>
       )}
       <div
         className={`top-0 left-0 w-[25vw] bg-blue-600  p-10 text-white fixed h-full ${
-          isOpen ? 'translate-x-0' : 'translate-x-full'
+          isOpen ? 'translate-x-0' : '-translate-x-full'
         } ease-in-out duration-300`}
       >
-        <h2 className="mt-20 text-4xl font-semibold text-white">
-          I am a sidebar
-        </h2>
+        <h2 className="mt-20 text-4xl font-semibold text-white">Navigation</h2>
 
         <nav>
           <ul>
             <li>
-              <NavLink to="/">
-                Cars
-              </NavLink>
+              <NavLink to="/">Cars</NavLink>
             </li>
             <li>
-              <NavLink to="/reserve">
-                Reserve
-              </NavLink>
+              <NavLink to="/reserve">Reserve</NavLink>
             </li>
             <li>
-              <NavLink to="/my_reservations">
-                My Reservations
-              </NavLink>
+              <NavLink to="/my_reservations">My Reservations</NavLink>
             </li>
           </ul>
         </nav>
