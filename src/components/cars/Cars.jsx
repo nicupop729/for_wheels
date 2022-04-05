@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import Car from './Car';
 
-function Cars() {
+const Cars = () => {
   const cars = useSelector((state) => state.carsReducer);
   return (
     <div className="">
@@ -11,6 +11,6 @@ function Cars() {
       ))}
     </div>
   );
-}
+};
 
 export default Cars;

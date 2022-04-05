@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-function Car({ car }) {
+const Car = ({ car }) => {
   const {
     model,
     price,
@@ -21,7 +21,7 @@ function Car({ car }) {
       <Link to="/car" state={car} className="border-solid border-2 border-dark p-6 bg-green-200">SHOW MORE</Link>
     </div>
   );
-}
+};
 
 Car.defaultProps = {
   car: {

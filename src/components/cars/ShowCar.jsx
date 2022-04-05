@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-function ShowCar() {
+const ShowCar = () => {
   const car = useLocation();
   const {
     description,
     model,
     price,
   } = car.state;
-  const ImgUrl = car.img_url;
+  const ImgUrl = car.state.img_url;
   return (
     <div className="flex flex-col p-8 inline-block shadow-lg mb-4 mx-3">
       <img src={ImgUrl} alt={`This is a${{ model }}`} />
@@ -20,10 +20,10 @@ function ShowCar() {
         {' '}
         USD
       </span>
-      <Link to="/reserve" className="border-solid border-2 border-dark p-6 bg-green-300">RESERVE</Link>
+      <Link to="/reserve" className="border-solid border-2 border-dark p-6 bg-green-300 mb-2">RESERVE</Link>
       <Link to="/" className="border-solid border-2 border-dark p-6 bg-green-100">GO BACK</Link>
     </div>
   );
-}
+};
 
 export default ShowCar;
