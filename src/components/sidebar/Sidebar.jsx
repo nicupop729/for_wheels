@@ -32,7 +32,7 @@ const Sidebar = () => {
       ) : (
         <button
           type="button"
-          className="text-xl text-white fixed top-4 left-4 z-10"
+          className="text-xl text-white fixed top-4 left-4 z-10 "
           onClick={() => toggleSidebarHandler()}
         >
           <FaRegWindowClose />
@@ -43,19 +43,19 @@ const Sidebar = () => {
           isOpen ? 'translate-x-0' : '-translate-x-full'
         } ease-in-out duration-300`}
       >
-        <nav className="mt-20 text-1xl font-semibold text-white">
+        <nav className="mt-20 text-1xl font-medium text-white">
           <ul>
-            <li>
+            <li className="mb-3">
               <NavLink to="/" onClick={() => toggleSidebarHandler()}>
                 Cars
               </NavLink>
             </li>
-            <li>
+            <li className="mb-3">
               <NavLink to="/reserve" onClick={() => toggleSidebarHandler()}>
                 Reserve
               </NavLink>
             </li>
-            <li>
+            <li className="mb-3">
               <NavLink
                 to="/my_reservations"
                 onClick={() => toggleSidebarHandler()}
