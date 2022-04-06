@@ -3,8 +3,6 @@ import baseUrl from '../apiServices';
 const GET_RENTALS_REQUEST = 'GET_RENTAL_REQUEST';
 const GET_RENTALS_SUCCESS = 'GET_RENTAL_SUCCESS';
 const GET_RENTALS_FAILURE = 'GET_RENTAL_FAILURE';
-
-// const RESERVE_CAR = 'RESERVE_CAR';
 const CANCEL_RESERVATION = 'CANCEL_RESERVATION';
 
 export const getRental = () => (dispatch) => {

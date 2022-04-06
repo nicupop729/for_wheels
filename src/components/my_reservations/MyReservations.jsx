@@ -3,10 +3,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { getCars } from '../../redux/cars/car';
 import { deleteRental, getRental } from '../../redux/myReservations/myReservations';
+import BigSpinner from '../spinners/BigSpinner';
+import SmallSpinner from '../spinners/SmallSpinner';
 
 const MyReservations = () => {
   const dispatch = useDispatch();
-  const { rentals } = useSelector((state) => state.myRentalsReducer);
+  const { isLoading, rentals } = useSelector((state) => state.myRentalsReducer);
   const cars = useSelector((state) => state.carsReducer);
 
   useEffect(() => {
@@ -21,12 +23,12 @@ const MyReservations = () => {
 
   return (
     <div className="m-2">
-      <p className="text-right mb-2">
+      <div className="text-right mb-2">
         Cars rented:
-        {rentals.length}
-      </p>
+        {isLoading ? <SmallSpinner /> : rentals.length}
+      </div>
       <ul>
-        {rentals.map((rental) => (
+        {isLoading ? <BigSpinner /> : rentals.map((rental) => (
           <li key={uuidv4()}>
             <div className="mb-2">
               <p>
