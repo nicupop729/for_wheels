@@ -1,0 +1,28 @@
+import axios from 'axios';
+
+const POST_RESERVATION_SUCCESS = 'for_wheels/reservations/POST_RESERVATION_SUCCESS';
+const initialState = [];
+const baseUrl = 'http://127.0.0.1:8000';
+
+export const postReservation = (obj) => (dispatch) => axios.post(`${baseUrl}/users/${obj.user_id}/rentals`, {
+  start_date: obj.start_date,
+  end_date: obj.end_date,
+  car_id: obj.car_id,
+  user_id: obj.user_id,
+  price: obj.price,
+}).then(
+  (response) => dispatch({ type: POST_RESERVATION_SUCCESS, message: response.data.message }),
+);
+
+const reservationsReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case POST_RESERVATION_SUCCESS:
+      return [
+        ...action.message,
+      ];
+    default:
+      return state;
+  }
+};
+
+export default reservationsReducer;
