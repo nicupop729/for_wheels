@@ -5,7 +5,7 @@ const GET_RENTALS_SUCCESS = 'GET_RENTAL_SUCCESS';
 const GET_RENTALS_FAILURE = 'GET_RENTAL_FAILURE';
 
 // const RESERVE_CAR = 'RESERVE_CAR';
-// const CANCEL_RESERVATION = 'CANCEL_RESERVATION';
+const CANCEL_RESERVATION = 'CANCEL_RESERVATION';
 
 export const getRental = () => (dispatch) => {
   dispatch({ type: GET_RENTALS_REQUEST });
@@ -19,6 +19,22 @@ export const getRental = () => (dispatch) => {
     }
   };
   fetchRental();
+};
+
+export const deleteRental = (rentalId) => (dispatch) => {
+  const fetchDeleteRental = async () => {
+    try {
+      const response = await fetch(`${baseUrl}/users/12/rentals/${rentalId}`, {
+        method: 'DELETE',
+      });
+      const data = await response.json();
+      dispatch({ type: CANCEL_RESERVATION, payload: rentalId });
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  fetchDeleteRental();
 };
 
 const initialState = {
@@ -35,6 +51,8 @@ const myRentalsReducer = (state = initialState, { type, payload }) => {
       return { ...state, isLoading: false, rentals: payload };
     case GET_RENTALS_FAILURE:
       return { ...state, isLoading: false, error: payload };
+    case CANCEL_RESERVATION:
+      return { ...state, rentals: state.rentals.filter((rental) => rental.id !== payload) };
     default:
       return state;
   }

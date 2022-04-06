@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { getCars } from '../../redux/cars/car';
-import { getRental } from '../../redux/myReservations/myReservations';
+import { deleteRental, getRental } from '../../redux/myReservations/myReservations';
 
 const MyReservations = () => {
   const dispatch = useDispatch();
@@ -52,6 +52,7 @@ const MyReservations = () => {
               <button
                 className="p-2 rounded bg-red-500 text-white"
                 type="submit"
+                onClick={() => dispatch(deleteRental(rental.id))}
               >
                 Cancel reservation
               </button>
