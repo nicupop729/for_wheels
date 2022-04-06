@@ -26,8 +26,7 @@ export const deleteRental = (rentalId) => (dispatch) => {
         method: 'DELETE',
       });
       const data = await response.json();
-      dispatch({ type: CANCEL_RESERVATION, payload: rentalId });
-      console.log(data);
+      dispatch({ type: CANCEL_RESERVATION, payload: { rentalId, data } });
     } catch (error) {
       console.log(error);
     }
@@ -39,7 +38,10 @@ const initialState = {
   isLoading: false,
   rentals: [],
   error: null,
+  message: null,
 };
+
+const filterRent = (arr, payload) => arr.rentals.filter((r) => r.id !== payload.rentalId);
 
 const myRentalsReducer = (state = initialState, { type, payload }) => {
   switch (type) {
@@ -50,7 +52,7 @@ const myRentalsReducer = (state = initialState, { type, payload }) => {
     case GET_RENTALS_FAILURE:
       return { ...state, isLoading: false, error: payload };
     case CANCEL_RESERVATION:
-      return { ...state, rentals: state.rentals.filter((rental) => rental.id !== payload) };
+      return { ...state, rentals: filterRent(state, payload), message: payload.data.message };
     default:
       return state;
   }
