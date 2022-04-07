@@ -62,7 +62,9 @@ const MyReservations = () => {
                 <button
                   className="p-2 rounded bg-red-500 text-white"
                   type="submit"
-                  onClick={() => { dispatch(deleteRental(rental.id)); }}
+                  onClick={() => {
+                    dispatch(deleteRental(rental.id));
+                  }}
                 >
                   Cancel reservation
                 </button>
