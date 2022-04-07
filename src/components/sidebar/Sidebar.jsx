@@ -19,7 +19,7 @@ const Sidebar = () => {
         >
           <svg
             onClick={() => toggleSidebarHandler()}
-            fill="#2563EB"
+            fill="rgb(34 197 94)"
             viewBox="0 0 100 80"
             width="30"
             height="30"
@@ -39,7 +39,7 @@ const Sidebar = () => {
         </button>
       )}
       <div
-        className={`top-0 left-0 w-[70vw] bg-blue-600  p-10 text-white fixed h-full ${
+        className={`top-0 left-0 w-[70vw] bg-green-500  p-10 text-white fixed h-full ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         } ease-in-out duration-300`}
       >

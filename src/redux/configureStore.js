@@ -2,14 +2,13 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import carsReducer from './cars/car';
+import myRentalsReducer from './myReservations/myReservations';
 import reservationsReducer from './reservations/reservation';
-// Import reducers here
 
 const reducer = combineReducers({
   carsReducer,
+  myRentalsReducer,
   reservationsReducer,
-
-  // Add reducers here
 });
 
 const store = createStore(reducer, applyMiddleware(thunk, logger));

@@ -1,8 +1,8 @@
 import axios from 'axios';
+import baseUrl from '../apiServices';
 
 const GET_CARS_SUCCESS = 'for_wheels/cars/GET_CARS_SUCCESS';
 const initialState = [];
-const baseUrl = 'http://127.0.0.1:8000';
 
 export const getCars = () => (dispatch) => axios.get(`${baseUrl}/cars`).then(
   (response) => {
