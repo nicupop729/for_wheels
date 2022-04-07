@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { getCars } from '../../redux/cars/car';
 import {
@@ -14,6 +15,11 @@ const MyReservations = () => {
   const dispatch = useDispatch();
   const { isLoading, rentals, message } = useSelector((state) => state.myRentalsReducer);
   const cars = useSelector((state) => state.carsReducer);
+
+  const findCar = (cars, rental) => {
+    const car = cars.find((car) => car.id === rental.car_id);
+    return car;
+  };
 
   useEffect(() => {
     dispatch(getCars());
@@ -41,12 +47,9 @@ const MyReservations = () => {
               <div className="mb-2">
                 <p>
                   Car model:
-                  {cars.find((car) => car.id === rental.car_id).model}
+                  {findCar(cars, rental).model}
                 </p>
-                <img
-                  src={cars.find((car) => car.id === rental.car_id).img_url}
-                  alt=""
-                />
+                <img src={findCar(cars, rental).img_url} alt="" />
                 <p>
                   Pick up date:
                   {convertDate(rental.start_date)}
@@ -68,6 +71,13 @@ const MyReservations = () => {
                 >
                   Cancel reservation
                 </button>
+                <Link
+                  to="/car"
+                  state={findCar(cars, rental)}
+                  className="border-solid border-2 border-dark p-2 bg-green-200"
+                >
+                  Show car details
+                </Link>
               </div>
             </li>
           ))
