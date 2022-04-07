@@ -8,6 +8,7 @@ import MyReservations from './components/my_reservations/MyReservations';
 import ShowCar from './components/cars/ShowCar';
 import './App.css';
 import { getCars } from './redux/cars/car';
+import User from './components/users/User';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ const App = () => {
       <main className="text-sm text-center">
         <Routes>
           <Route path="/" element={<Cars />} />
+          <Route path="/user" element={<User />} />
           <Route path="/reserve" element={<Reserve />} />
           <Route path="/my_reservations" element={<MyReservations />} />
           <Route path="/car" element={<ShowCar />} />
