@@ -20,7 +20,7 @@ const ShowCar = () => {
         {' '}
         USD
       </span>
-      <Link to="/reserve" className="border-solid border-2 border-dark p-6 bg-green-300 mb-2">RESERVE</Link>
+      <Link to="/reserve" className="border-solid border-2 border-dark p-6 bg-green-300 mb-2" state={car.state}>RESERVE</Link>
       <Link to="/" className="border-solid border-2 border-dark p-6 bg-green-100">GO BACK</Link>
     </div>
   );

@@ -13,7 +13,7 @@ const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCars());
-  });
+  }, []);
 
   return (
     <div className="mx-auto mt-8">

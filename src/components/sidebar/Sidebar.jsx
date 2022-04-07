@@ -51,7 +51,7 @@ const Sidebar = () => {
               </NavLink>
             </li>
             <li className="mb-3">
-              <NavLink to="/reserve" onClick={() => toggleSidebarHandler()}>
+              <NavLink to="/" onClick={() => toggleSidebarHandler()}>
                 Reserve
               </NavLink>
             </li>
