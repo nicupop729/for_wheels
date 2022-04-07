@@ -30,7 +30,6 @@ const Reserve = () => {
   };
   const getStartHour = (event) => {
     if (obj.start_date === '') {
-      document.getElementById('StartHour').value = '';
       alert('Select start date first!');
     } else {
       obj.start_date += ' ';
@@ -39,7 +38,6 @@ const Reserve = () => {
   };
   const getEndHour = (event) => {
     if (obj.end_date === '') {
-      document.getElementById('EndHour').value = '';
       alert('Select end date first!');
     } else {
       obj.end_date += ' ';
@@ -48,13 +46,19 @@ const Reserve = () => {
   };
   const sendReservation = (e) => {
     e.preventDefault();
-    dispatch(postReservation(obj));
-    document.getElementById('StartDate').value = '';
-    document.getElementById('EndDate').value = '';
-    NotificationManager.success('Redirecting you to your reservations.', 'Reservation Created!');
-    setTimeout(() => {
-      window.location.replace('/my_reservations');
-    }, 3000);
+    if (obj.start_date === '' || obj.end_date === '' || document.getElementById('StartHour').value === '' || document.getElementById('EndHour').value === '') {
+      NotificationManager.error('Please check date and time!', 'Somethiung went wrong!');
+    } else {
+      dispatch(postReservation(obj));
+      NotificationManager.success('Redirecting you to your reservations.', 'Reservation Created!');
+      document.getElementById('StartHour').value = '';
+      document.getElementById('EndHour').value = '';
+      document.getElementById('StartDate').value = '';
+      document.getElementById('EndDate').value = '';
+      setTimeout(() => {
+        window.location.replace('/my_reservations');
+      }, 3000);
+    }
   };
   return (
     <div className="flex flex-col p-8 inline-block shadow-lg mb-4 mx-3">
