@@ -11,14 +11,20 @@ export const postReservation = (obj) => (dispatch) => axios.post(`${baseUrl}/use
   user_id: obj.user_id,
   price: obj.price,
 }).then(
-  (response) => dispatch({ type: POST_RESERVATION_SUCCESS, message: response.data.message }),
+  (response) => {
+    const messages = [];
+    messages.push({
+      message: response.data.message,
+    });
+    dispatch({ type: POST_RESERVATION_SUCCESS, messages });
+  },
 );
 
 const reservationsReducer = (state = initialState, action) => {
   switch (action.type) {
     case POST_RESERVATION_SUCCESS:
       return [
-        ...action.message,
+        ...action.messages,
       ];
     default:
       return state;
