@@ -1,12 +1,14 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 import { postReservation } from '../../redux/reservations/reservation';
 import 'react-notifications/lib/notifications.css';
 
-const Reserve = ({ loggedIn }) => {
+const Reserve = ({ loggedIn, userId }) => {
+  const navigate = useNavigate();
+
   const car = useLocation();
   const dispatch = useDispatch();
   const {
@@ -20,7 +22,7 @@ const Reserve = ({ loggedIn }) => {
     start_date: '',
     end_date: '',
     car_id: id,
-    user_id: 1,
+    user_id: userId,
     price,
   };
   const getStartDate = () => {
@@ -56,9 +58,9 @@ const Reserve = ({ loggedIn }) => {
       document.getElementById('EndHour').value = '';
       document.getElementById('StartDate').value = '';
       document.getElementById('EndDate').value = '';
-      setTimeout(() => {
-        window.location.replace('/my_reservations');
-      }, 3000);
+      // setTimeout(() => {
+      // }, 3000);
+      navigate('/my_reservations');
     }
   };
   return (

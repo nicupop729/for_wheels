@@ -12,7 +12,7 @@ import User from './components/users/User';
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false);
-  // const [user, setUser] = useState(null);
+  const [userId, setUserId] = useState(null);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -23,7 +23,9 @@ const App = () => {
     setLoggedIn(login);
   };
 
-  console.log('loggedIn in App.js', loggedIn);
+  const handleUser = (user) => {
+    setUserId(user);
+  };
 
   return (
     <div className="mx-auto mt-8">
@@ -31,11 +33,17 @@ const App = () => {
       <main className="text-sm text-center">
         <Routes>
           <Route path="/" element={<Cars />} />
-          <Route path="/users" element={<User onSetLogin={handleLogin} />} />
-          <Route path="/reserve" element={<Reserve loggedIn={loggedIn} />} />
+          <Route
+            path="/users"
+            element={<User onSetLogin={handleLogin} onSetUserId={handleUser} />}
+          />
+          <Route
+            path="/reserve"
+            element={<Reserve loggedIn={loggedIn} userId={userId} />}
+          />
           <Route
             path="/my_reservations"
-            element={<MyReservations loggedIn={loggedIn} />}
+            element={<MyReservations loggedIn={loggedIn} userId={userId} />}
           />
           <Route path="/car" element={<ShowCar loggedIn={loggedIn} />} />
         </Routes>

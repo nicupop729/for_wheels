@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUsers } from '../../redux/users/users';
 
-const User = ({ onSetLogin }) => {
+const User = ({ onSetLogin, onSetUserId }) => {
   const dispatch = useDispatch();
   const { users, status } = useSelector((state) => state.usersReducer);
   useEffect(() => {
@@ -14,8 +14,8 @@ const User = ({ onSetLogin }) => {
 
   useEffect(() => {
     if (existingUser.status === 'OK') {
-      console.log('USER LOGGED IN in USER.jsx', existingUser);
       onSetLogin(true);
+      onSetUserId(existingUser.id);
     }
   }, [existingUser]);
 

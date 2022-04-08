@@ -12,7 +12,7 @@ import DeleteNotification from '../notifications/DeleteNotification';
 import BigSpinner from '../spinners/BigSpinner';
 import SmallSpinner from '../spinners/SmallSpinner';
 
-const MyReservations = ({ loggedIn }) => {
+const MyReservations = ({ loggedIn, userId }) => {
   const dispatch = useDispatch();
   const { isLoading, rentals, message } = useSelector(
     (state) => state.myRentalsReducer,
@@ -29,7 +29,7 @@ const MyReservations = ({ loggedIn }) => {
   }, []);
 
   useEffect(() => {
-    dispatch(getRental());
+    dispatch(getRental(userId));
   }, []);
 
   const convertDate = (date) => new Date(date).toLocaleString('en-US');
