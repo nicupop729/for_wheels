@@ -8,7 +8,6 @@ import 'react-notifications/lib/notifications.css';
 
 const Reserve = ({ loggedIn, userId }) => {
   const navigate = useNavigate();
-
   const car = useLocation();
   const dispatch = useDispatch();
   const {
@@ -58,9 +57,9 @@ const Reserve = ({ loggedIn, userId }) => {
       document.getElementById('EndHour').value = '';
       document.getElementById('StartDate').value = '';
       document.getElementById('EndDate').value = '';
-      // setTimeout(() => {
-      // }, 3000);
-      navigate('/my_reservations');
+      setTimeout(() => {
+        navigate('/my_reservations');
+      }, 3000);
     }
   };
   return (

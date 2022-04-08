@@ -1,3 +1,4 @@
+import { NotificationManager } from 'react-notifications';
 import baseUrl from '../apiServices';
 
 const GET_RENTALS_REQUEST = 'GET_RENTAL_REQUEST';
@@ -27,6 +28,7 @@ export const deleteRental = (rentalId) => (dispatch) => {
       });
       const data = await response.json();
       dispatch({ type: CANCEL_RESERVATION, payload: { rentalId, data } });
+      NotificationManager.error(data.message);
     } catch (error) {
       console.log(error);
     }
