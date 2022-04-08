@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -11,9 +12,11 @@ import DeleteNotification from '../notifications/DeleteNotification';
 import BigSpinner from '../spinners/BigSpinner';
 import SmallSpinner from '../spinners/SmallSpinner';
 
-const MyReservations = () => {
+const MyReservations = ({ loggedIn }) => {
   const dispatch = useDispatch();
-  const { isLoading, rentals, message } = useSelector((state) => state.myRentalsReducer);
+  const { isLoading, rentals, message } = useSelector(
+    (state) => state.myRentalsReducer,
+  );
   const cars = useSelector((state) => state.carsReducer);
 
   const findCar = (cars, rental) => {
@@ -30,6 +33,8 @@ const MyReservations = () => {
   }, []);
 
   const convertDate = (date) => new Date(date).toLocaleString('en-US');
+
+  console.log('LOGGIDIN FROM USERS', loggedIn);
 
   return (
     <div className="m-2">

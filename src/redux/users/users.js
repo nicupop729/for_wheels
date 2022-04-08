@@ -12,7 +12,11 @@ export const getUsers = () => (dispatch) => {
       const data = await response.json();
       dispatch({
         type: GET_USERS_SUCCESS,
-        payload: { message: data.message, users: data.data },
+        payload: {
+          message: data.message,
+          users: data.data,
+          status: data.status,
+        },
       });
     } catch (error) {
       dispatch({ type: GET_USERS_FAILURE, payload: error.message });
@@ -26,6 +30,7 @@ const initialState = {
   users: [],
   message: null,
   error: null,
+  status: null,
 };
 
 const usersReducer = (state = initialState, { type, payload }) => {
@@ -38,9 +43,14 @@ const usersReducer = (state = initialState, { type, payload }) => {
         isLoading: false,
         users: payload.users,
         message: payload.message,
+        status: payload.status,
       };
     case GET_USERS_FAILURE:
-      return { ...state, isLoading: false, error: payload };
+      return {
+        ...state,
+        isLoading: false,
+        error: payload,
+      };
     default:
       return state;
   }

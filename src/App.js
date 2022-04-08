@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import Sidebar from './components/sidebar/Sidebar';
@@ -11,10 +11,17 @@ import { getCars } from './redux/cars/car';
 import User from './components/users/User';
 
 const App = () => {
+  const [loggedIn, setLoggedIn] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCars());
   }, []);
+
+  const handleLogin = (login) => {
+    setLoggedIn(login);
+  };
+
+  console.log('loggedIn in App.js', loggedIn);
 
   return (
     <div className="mx-auto mt-8">
@@ -22,10 +29,13 @@ const App = () => {
       <main className="text-sm text-center">
         <Routes>
           <Route path="/" element={<Cars />} />
-          <Route path="/user" element={<User />} />
-          <Route path="/reserve" element={<Reserve />} />
-          <Route path="/my_reservations" element={<MyReservations />} />
-          <Route path="/car" element={<ShowCar />} />
+          <Route path="/users" element={<User onSetLogin={handleLogin} />} />
+          <Route path="/reserve" element={<Reserve loggedIn={loggedIn} />} />
+          <Route
+            path="/my_reservations"
+            element={<MyReservations loggedIn={loggedIn} />}
+          />
+          <Route path="/car" element={<ShowCar loggedIn={loggedIn} />} />
         </Routes>
       </main>
     </div>
