@@ -12,6 +12,8 @@ import User from './components/users/User';
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false);
+  // const [user, setUser] = useState(null);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCars());
