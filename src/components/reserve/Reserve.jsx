@@ -103,7 +103,15 @@ const Reserve = ({ loggedIn, userId }) => {
           </form>
         </div>
       ) : (
-        <h1>You are not logged in</h1>
+        <>
+          <h1 className="mb-5">You are not logged in</h1>
+          <Link
+            to="/login"
+            className="border-solid border-2 border-dark p-2 bg-green-200"
+          >
+            Login
+          </Link>
+        </>
       )}
     </>
   );

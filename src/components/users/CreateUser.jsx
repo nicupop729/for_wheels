@@ -1,22 +1,15 @@
-/* eslint-disable react/prop-types */
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import {
+  NotificationManager,
+  NotificationContainer,
+} from 'react-notifications';
 import baseUrl from '../../redux/apiServices';
 
 const CreateUser = ({ onSetLogin, onSetUserId }) => {
-  const [errors, setErrors] = useState(null);
-  const [success, setSuccess] = useState(null);
+  const navigate = useNavigate();
   const [input, setInput] = useState('');
-
-  const setStates = (data) => {
-    if (data.status === 'OK') {
-      setSuccess(data.message);
-      setErrors(null);
-      setInput('');
-    } else {
-      setErrors(data.errors);
-      setSuccess(null);
-    }
-  };
 
   const fetchPostUser = async (userName) => {
     try {
@@ -28,8 +21,7 @@ const CreateUser = ({ onSetLogin, onSetUserId }) => {
         body: JSON.stringify({ name: userName }),
       });
       const data = await response.json();
-      setStates(data);
-      if (errors === null) {
+      if (data.status === 'OK') {
         const response = await fetch(`${baseUrl}/users/log_in`, {
           method: 'POST',
           headers: {
@@ -37,13 +29,16 @@ const CreateUser = ({ onSetLogin, onSetUserId }) => {
           },
           body: JSON.stringify({ name: userName }),
         });
-        const data = await response.json();
+        const res = await response.json();
         onSetLogin(true);
-        onSetUserId(data.data[0].id);
+        onSetUserId(res.data[0].id);
+        NotificationManager.success(data.message);
+        setTimeout(() => navigate('/'), 2000);
+      } else {
+        NotificationManager.error(data.errors);
       }
-      console.log(data);
     } catch (error) {
-      console.error(error.message);
+      NotificationManager.error(error.message);
     }
   };
 
@@ -55,13 +50,12 @@ const CreateUser = ({ onSetLogin, onSetUserId }) => {
     }
   };
 
+  const newLocal = ' ';
   return (
     <>
       <h4>New user? Please register here</h4>
-      {success && (
-        <p className="text-sm text-green-800 font-medium">{success}</p>
-      )}
-      {errors && <p className="text-sm text-red-800 font-medium">{errors}</p>}
+      {newLocal}
+      <NotificationContainer />
       <form>
         <input
           id="new_user_input"
@@ -74,6 +68,11 @@ const CreateUser = ({ onSetLogin, onSetUserId }) => {
       </form>
     </>
   );
+};
+
+CreateUser.propTypes = {
+  onSetLogin: PropTypes.func.isRequired,
+  onSetUserId: PropTypes.func.isRequired,
 };
 
 export default CreateUser;

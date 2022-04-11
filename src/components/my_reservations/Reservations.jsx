@@ -18,7 +18,15 @@ const Reservations = () => {
   return (
     <>
       {!rentals.length ? (
-        <p>No cars rented yet! Why not renting one?</p>
+        <>
+          <p className="mb-4">No cars rented yet! Why not renting one?</p>
+          <Link
+            to="/"
+            className="border-solid border-2 border-dark p-2 bg-green-200"
+          >
+            Rent a Car
+          </Link>
+        </>
       ) : (
         rentals.map((rental) => (
           <li key={uuidv4()}>

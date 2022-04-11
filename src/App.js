@@ -8,7 +8,7 @@ import MyReservations from './components/my_reservations/MyReservations';
 import ShowCar from './components/cars/ShowCar';
 import './App.css';
 import { getCars } from './redux/cars/car';
-import User from './components/users/User';
+import Login from './components/users/Login';
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -29,13 +29,15 @@ const App = () => {
 
   return (
     <div className="mx-auto mt-8">
-      <Sidebar />
+      <Sidebar onSetLogin={handleLogin} onSetUserId={handleUser} />
       <main className="text-sm text-center">
         <Routes>
           <Route path="/" element={<Cars />} />
           <Route
-            path="/users"
-            element={<User onSetLogin={handleLogin} onSetUserId={handleUser} />}
+            path="/login"
+            element={
+              <Login onSetLogin={handleLogin} onSetUserId={handleUser} />
+            }
           />
           <Route
             path="/reserve"

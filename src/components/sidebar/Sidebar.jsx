@@ -1,16 +1,26 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { FaRegWindowClose } from 'react-icons/fa';
+import { NotificationContainer, NotificationManager } from 'react-notifications';
 
-const Sidebar = () => {
+const Sidebar = ({ onSetLogin, onSetUserId }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleSidebarHandler = () => {
     setIsOpen(!isOpen);
   };
 
+  const logOutHandler = () => {
+    toggleSidebarHandler();
+    onSetLogin(false);
+    onSetUserId(null);
+    NotificationManager.success('Logged out successfully');
+  };
+
   return (
     <>
+      <NotificationContainer />
       {!isOpen ? (
         <button
           className="fixed z-30 flex items-center cursor-pointer top-4 left-4 space-y-2"
@@ -64,10 +74,23 @@ const Sidebar = () => {
               </NavLink>
             </li>
           </ul>
+          <ul className="flex justify-evenly mt-[70vh]">
+            <NavLink to="/login" onClick={() => toggleSidebarHandler()}>
+              Login
+            </NavLink>
+            <NavLink to="/" onClick={logOutHandler}>
+              Logout
+            </NavLink>
+          </ul>
         </nav>
       </div>
     </>
   );
+};
+
+Sidebar.propTypes = {
+  onSetLogin: PropTypes.func.isRequired,
+  onSetUserId: PropTypes.func.isRequired,
 };
 
 export default Sidebar;

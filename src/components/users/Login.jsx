@@ -1,13 +1,15 @@
-/* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
-
+import {
+  NotificationManager,
+  NotificationContainer,
+} from 'react-notifications';
 import { getUsers } from '../../redux/users/users';
-// import { postUser } from '../../redux/users/createUser';
 import CreateUser from './CreateUser';
 
-const User = ({ onSetLogin, onSetUserId }) => {
+const Login = ({ onSetLogin, onSetUserId }) => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -32,10 +34,15 @@ const User = ({ onSetLogin, onSetUserId }) => {
       const user = users.find((user) => user.name === value);
       setExistingUser(
         user !== undefined
-          ? { ...user, status, message: 'User account found' }
-          : { status: 404, message: 'User not found, Please Register' },
+          ? { ...user, status }
+          : { status: 404 },
       );
-      if (user !== undefined) setTimeout(() => navigate('/'), 2000);
+      if (user !== undefined) {
+        NotificationManager.success('User account found');
+        setTimeout(() => navigate('/'), 2000);
+      } else {
+        NotificationManager.error('User not found, Please Register');
+      }
     }
   };
 
@@ -43,11 +50,7 @@ const User = ({ onSetLogin, onSetUserId }) => {
     <div>
       <h1>Welcome to For Wheels</h1>
       <h4>Already a user?</h4>
-      {existingUser.status === 404 ? (
-        <p>{existingUser.message}</p>
-      ) : (
-        <p>{existingUser.message}</p>
-      )}
+      <NotificationContainer />
       <form>
         <input
           id="existing_user_input"
@@ -61,4 +64,9 @@ const User = ({ onSetLogin, onSetUserId }) => {
   );
 };
 
-export default User;
+Login.propTypes = {
+  onSetLogin: PropTypes.func.isRequired,
+  onSetUserId: PropTypes.func.isRequired,
+};
+
+export default Login;
