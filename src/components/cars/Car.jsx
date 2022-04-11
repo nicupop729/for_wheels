@@ -9,10 +9,12 @@ const Car = ({ car }) => {
   } = car;
   const ImgUrl = car.img_url;
   return (
-    <Link to="/car" state={car}>
-      <div className="flex flex-col p-8 inline-block mb-6 mx-3 min-h-full shadow-md hover:shadow-xl transition duration-700">
-        <img src={ImgUrl} alt={`This is a${{ model }}`} className="max-h-80" />
-        <span className="text-2xl mt-3 mb-5 font-bold">{model}</span>
+    <Link to="/car" state={car} className="mb-5">
+      <div className="flex flex-col py-8 px-4 inline-block mx-3 min-h-full shadow-md hover:shadow-xl transition duration-700">
+        <div className="relative h-0 pb-3/7 pt-1/4 flex-1 xl:mb-8">
+          <img src={ImgUrl} alt={`This is a${{ model }}`} className="absolute inset-0 w-full h-full rounded-lg object-cover z-0" />
+        </div>
+        <span className="text-2xl mb-5 font-bold">{model}</span>
         <span className="text-xs text-gray-400">{description}</span>
       </div>
     </Link>
