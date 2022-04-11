@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 import {
   NotificationManager,
   NotificationContainer,
@@ -9,7 +9,12 @@ import {
 import { getUsers } from '../../redux/users/users';
 import CreateUser from './CreateUser';
 
-const Login = ({ onSetLogin, onSetUserId }) => {
+const Login = ({
+  onSetLogin,
+  onSetUserId,
+  onSetUserName,
+  loggedIn,
+}) => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -24,6 +29,7 @@ const Login = ({ onSetLogin, onSetUserId }) => {
     if (existingUser.status === 'OK') {
       onSetLogin(true);
       onSetUserId(existingUser.id);
+      onSetUserName(existingUser.name);
     }
   }, [existingUser]);
 
@@ -33,9 +39,7 @@ const Login = ({ onSetLogin, onSetUserId }) => {
       const { value } = e.target;
       const user = users.find((user) => user.name === value);
       setExistingUser(
-        user !== undefined
-          ? { ...user, status }
-          : { status: 404 },
+        user !== undefined ? { ...user, status } : { status: 404 },
       );
       if (user !== undefined) {
         NotificationManager.success('User account found');
@@ -46,27 +50,56 @@ const Login = ({ onSetLogin, onSetUserId }) => {
     }
   };
 
+  const logOutHandler = () => {
+    onSetLogin(false);
+    onSetUserId(null);
+    onSetUserName('');
+    NotificationManager.success('Logged out successfully');
+  };
+
   return (
-    <div>
-      <h1>Welcome to For Wheels</h1>
-      <h4>Already a user?</h4>
+    <>
       <NotificationContainer />
-      <form>
-        <input
-          id="existing_user_input"
-          type="text"
-          placeholder="Enter your user account"
-          onKeyPress={setExistingUserHandler}
-        />
-      </form>
-      <CreateUser onSetLogin={onSetLogin} onSetUserId={onSetUserId} />
-    </div>
+      {loggedIn ? (
+        <>
+          <h1>Welcome to For Wheels</h1>
+          <p className="mb-4">You are logged in!</p>
+          <NavLink
+            to="/"
+            onClick={logOutHandler}
+            className="p-2 rounded bg-red-500 text-white"
+          >
+            Logout
+          </NavLink>
+        </>
+      ) : (
+        <div>
+          <h1>Welcome to For Wheels</h1>
+          <h4>Already a user?</h4>
+          <form>
+            <input
+              id="existing_user_input"
+              type="text"
+              placeholder="Enter your user account"
+              onKeyPress={setExistingUserHandler}
+            />
+          </form>
+          <CreateUser
+            onSetLogin={onSetLogin}
+            onSetUserId={onSetUserId}
+            onSetUserName={onSetUserName}
+          />
+        </div>
+      )}
+    </>
   );
 };
 
 Login.propTypes = {
   onSetLogin: PropTypes.func.isRequired,
   onSetUserId: PropTypes.func.isRequired,
+  onSetUserName: PropTypes.func.isRequired,
+  loggedIn: PropTypes.bool.isRequired,
 };
 
 export default Login;

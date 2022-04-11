@@ -9,6 +9,7 @@ import {
 import Reservations from './Reservations';
 import BigSpinner from '../spinners/BigSpinner';
 import SmallSpinner from '../spinners/SmallSpinner';
+import { getUsers } from '../../redux/users/users';
 
 const MyReservations = ({ loggedIn, userId }) => {
   const dispatch = useDispatch();
@@ -19,6 +20,10 @@ const MyReservations = ({ loggedIn, userId }) => {
   useEffect(() => {
     dispatch(getRental(userId));
   }, [dispatch, userId]);
+
+  useEffect(() => {
+    dispatch(getUsers());
+  }, [dispatch]);
 
   return (
     <>

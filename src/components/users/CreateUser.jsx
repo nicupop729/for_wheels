@@ -7,7 +7,7 @@ import {
 } from 'react-notifications';
 import baseUrl from '../../redux/apiServices';
 
-const CreateUser = ({ onSetLogin, onSetUserId }) => {
+const CreateUser = ({ onSetLogin, onSetUserId, onSetUserName }) => {
   const navigate = useNavigate();
   const [input, setInput] = useState('');
 
@@ -32,6 +32,7 @@ const CreateUser = ({ onSetLogin, onSetUserId }) => {
         const res = await response.json();
         onSetLogin(true);
         onSetUserId(res.data[0].id);
+        onSetUserName(res.data[0].name);
         NotificationManager.success(data.message);
         setTimeout(() => navigate('/'), 2000);
       } else {
@@ -73,6 +74,7 @@ const CreateUser = ({ onSetLogin, onSetUserId }) => {
 CreateUser.propTypes = {
   onSetLogin: PropTypes.func.isRequired,
   onSetUserId: PropTypes.func.isRequired,
+  onSetUserName: PropTypes.func.isRequired,
 };
 
 export default CreateUser;

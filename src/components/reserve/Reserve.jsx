@@ -1,7 +1,7 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 import { postReservation } from '../../redux/reservations/reservation';
 import 'react-notifications/lib/notifications.css';
@@ -115,6 +115,15 @@ const Reserve = ({ loggedIn, userId }) => {
       )}
     </>
   );
+};
+
+Reserve.propTypes = {
+  loggedIn: PropTypes.bool.isRequired,
+  userId: PropTypes.number,
+};
+
+Reserve.defaultProps = {
+  userId: null,
 };
 
 export default Reserve;

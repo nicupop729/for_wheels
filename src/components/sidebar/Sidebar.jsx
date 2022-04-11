@@ -2,9 +2,18 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { FaRegWindowClose } from 'react-icons/fa';
-import { NotificationContainer, NotificationManager } from 'react-notifications';
+import {
+  NotificationContainer,
+  NotificationManager,
+} from 'react-notifications';
 
-const Sidebar = ({ onSetLogin, onSetUserId }) => {
+const Sidebar = ({
+  onSetLogin,
+  onSetUserId,
+  onSetUserName,
+  loggedIn,
+  userName,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleSidebarHandler = () => {
@@ -15,7 +24,10 @@ const Sidebar = ({ onSetLogin, onSetUserId }) => {
     toggleSidebarHandler();
     onSetLogin(false);
     onSetUserId(null);
-    NotificationManager.success('Logged out successfully');
+    onSetUserName('');
+    if (loggedIn) {
+      NotificationManager.success('Logged out successfully');
+    } else NotificationManager.error('You were not logged in');
   };
 
   return (
@@ -54,6 +66,16 @@ const Sidebar = ({ onSetLogin, onSetUserId }) => {
         } ease-in-out duration-300`}
       >
         <nav className="mt-20 text-1xl font-medium text-white">
+          {loggedIn ? (
+            <h3>
+              Sign in as
+              {' '}
+              {userName}
+            </h3>
+          ) : (
+            <h3>You are not signed in</h3>
+          )}
+
           <ul>
             <li className="mb-3">
               <NavLink to="/" onClick={() => toggleSidebarHandler()}>
@@ -74,7 +96,7 @@ const Sidebar = ({ onSetLogin, onSetUserId }) => {
               </NavLink>
             </li>
           </ul>
-          <ul className="flex justify-evenly mt-[70vh]">
+          <ul className="flex justify-evenly mt-[50vh]">
             <NavLink to="/login" onClick={() => toggleSidebarHandler()}>
               Login
             </NavLink>
@@ -91,6 +113,9 @@ const Sidebar = ({ onSetLogin, onSetUserId }) => {
 Sidebar.propTypes = {
   onSetLogin: PropTypes.func.isRequired,
   onSetUserId: PropTypes.func.isRequired,
+  onSetUserName: PropTypes.func.isRequired,
+  loggedIn: PropTypes.bool.isRequired,
+  userName: PropTypes.string.isRequired,
 };
 
 export default Sidebar;

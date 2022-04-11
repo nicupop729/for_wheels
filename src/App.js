@@ -16,9 +16,13 @@ const App = () => {
   const [loggedIn, setLoggedIn] = useState(
     dataFromLocal ? dataFromLocal.loggedIn : false,
   );
-  const [userId, setUserId] = useState(dataFromLocal ? dataFromLocal.userId : null);
+  const [userId, setUserId] = useState(
+    dataFromLocal ? dataFromLocal.userId : null,
+  );
 
-  localStorage.setItem('currentUser', JSON.stringify({ loggedIn, userId }));
+  const [userName, setUserName] = useState(dataFromLocal ? dataFromLocal.userName : '');
+
+  localStorage.setItem('currentUser', JSON.stringify({ loggedIn, userId, userName }));
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -33,17 +37,32 @@ const App = () => {
     setUserId(user);
   };
 
+  const handleUserName = (name) => {
+    setUserName(name);
+  };
+
   return (
     <div className="mx-auto mt-8">
-      <Sidebar onSetLogin={handleLogin} onSetUserId={handleUser} />
+      <Sidebar
+        onSetLogin={handleLogin}
+        onSetUserId={handleUser}
+        onSetUserName={handleUserName}
+        loggedIn={loggedIn}
+        userName={userName}
+      />
       <main className="text-sm text-center">
         <Routes>
           <Route path="/" element={<Cars />} />
           <Route
             path="/login"
-            element={
-              <Login onSetLogin={handleLogin} onSetUserId={handleUser} />
-            }
+            element={(
+              <Login
+                onSetLogin={handleLogin}
+                onSetUserId={handleUser}
+                onSetUserName={handleUserName}
+                loggedIn={loggedIn}
+              />
+            )}
           />
           <Route
             path="/reserve"
