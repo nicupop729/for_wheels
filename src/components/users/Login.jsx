@@ -58,40 +58,51 @@ const Login = ({
   };
 
   return (
-    <>
-      <NotificationContainer />
-      {loggedIn ? (
-        <>
-          <h1>Welcome to For Wheels</h1>
-          <p className="mb-4">You are logged in!</p>
-          <NavLink
-            to="/"
-            onClick={logOutHandler}
-            className="p-2 rounded bg-red-500 text-white"
-          >
-            Logout
-          </NavLink>
-        </>
-      ) : (
-        <div>
-          <h1>Welcome to For Wheels</h1>
-          <h4>Already a user?</h4>
-          <form>
-            <input
-              id="existing_user_input"
-              type="text"
-              placeholder="Enter your user account"
-              onKeyPress={setExistingUserHandler}
+    <div className="h-screen mt-16 bg-gray-400">
+      <div className="bg-gray-400 max-h-screen flex flex-col pt-16">
+        <NotificationContainer />
+        {loggedIn ? (
+          <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+            <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+              <h1 className="mb-8 text-3xl text-center">
+                Welcome to For Wheels
+              </h1>
+              <p className="mb-4">You are logged in!</p>
+              <NavLink
+                to="/"
+                onClick={logOutHandler}
+                className="p-2 rounded bg-red-500 text-white"
+              >
+                Logout
+              </NavLink>
+            </div>
+          </div>
+        ) : (
+          <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+            <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+              <h1 className="mb-8 text-3xl text-center">
+                Welcome to For Wheels
+              </h1>
+              <h4 className="mb-8 text-1xl text-center">Already a user?</h4>
+              <form>
+                <input
+                  id="existing_user_input"
+                  type="text"
+                  className="block border border-grey-light w-full p-3 rounded mb-4"
+                  placeholder="Write your user account and press enter"
+                  onKeyPress={setExistingUserHandler}
+                />
+              </form>
+            </div>
+            <CreateUser
+              onSetLogin={onSetLogin}
+              onSetUserId={onSetUserId}
+              onSetUserName={onSetUserName}
             />
-          </form>
-          <CreateUser
-            onSetLogin={onSetLogin}
-            onSetUserId={onSetUserId}
-            onSetUserName={onSetUserName}
-          />
-        </div>
-      )}
-    </>
+          </div>
+        )}
+      </div>
+    </div>
   );
 };
 

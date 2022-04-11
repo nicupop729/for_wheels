@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   NotificationManager,
-  NotificationContainer,
 } from 'react-notifications';
 import baseUrl from '../../redux/apiServices';
 
@@ -53,21 +52,23 @@ const CreateUser = ({ onSetLogin, onSetUserId, onSetUserName }) => {
 
   const newLocal = ' ';
   return (
-    <>
-      <h4>New user? Please register here</h4>
+    <div className="bg-white container px-6 py-8 rounded shadow-md text-black w-full">
+      <h4 className="mb-8 text-1xl text-center">
+        New user? Please register here
+      </h4>
       {newLocal}
-      <NotificationContainer />
       <form>
         <input
           id="new_user_input"
           type="text"
-          placeholder="Enter your new user account and press enter"
+          className="block border border-grey-light w-full p-3 rounded mb-4"
+          placeholder="Write your new user account and press enter"
           onKeyPress={setCreateUserHandler}
           onChange={(e) => setInput(e.target.value)}
           value={input}
         />
       </form>
-    </>
+    </div>
   );
 };
 
