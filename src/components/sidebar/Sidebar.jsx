@@ -54,14 +54,14 @@ const Sidebar = ({
       ) : (
         <button
           type="button"
-          className="text-xl text-white fixed top-4 left-4 z-10 "
+          className="text-xl text-white fixed top-4 left-4 z-20 "
           onClick={() => toggleSidebarHandler()}
         >
           <FaRegWindowClose />
         </button>
       )}
       <div
-        className={`top-0 left-0 w-[70vw] bg-green-500  p-10 text-white fixed h-full ${
+        className={`top-0 left-0 w-[70vw] bg-green-500  p-10 text-white fixed h-full z-10 ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         } ease-in-out duration-300`}
       >
