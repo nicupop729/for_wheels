@@ -1,3 +1,4 @@
+import { NotificationManager } from 'react-notifications';
 import baseUrl from '../apiServices';
 
 const GET_RENTALS_REQUEST = 'GET_RENTAL_REQUEST';
@@ -5,11 +6,11 @@ const GET_RENTALS_SUCCESS = 'GET_RENTAL_SUCCESS';
 const GET_RENTALS_FAILURE = 'GET_RENTAL_FAILURE';
 const CANCEL_RESERVATION = 'CANCEL_RESERVATION';
 
-export const getRental = () => (dispatch) => {
+export const getRental = (id) => (dispatch) => {
   dispatch({ type: GET_RENTALS_REQUEST });
   const fetchRental = async () => {
     try {
-      const response = await fetch(`${baseUrl}/users/12/rentals`);
+      const response = await fetch(`${baseUrl}/users/${id}/rentals`);
       const data = await response.json();
       dispatch({ type: GET_RENTALS_SUCCESS, payload: data.data });
     } catch (error) {
@@ -27,8 +28,9 @@ export const deleteRental = (rentalId) => (dispatch) => {
       });
       const data = await response.json();
       dispatch({ type: CANCEL_RESERVATION, payload: { rentalId, data } });
+      NotificationManager.error(data.message);
     } catch (error) {
-      console.log(error);
+      NotificationManager.error(error.message);
     }
   };
   fetchDeleteRental();

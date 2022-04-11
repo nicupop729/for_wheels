@@ -1,8 +1,8 @@
 import axios from 'axios';
+import baseUrl from '../apiServices';
 
 const POST_RESERVATION_SUCCESS = 'for_wheels/reservations/POST_RESERVATION_SUCCESS';
 const initialState = [];
-const baseUrl = 'http://127.0.0.1:8000';
 
 export const postReservation = (obj) => (dispatch) => axios.post(`${baseUrl}/users/${obj.user_id}/rentals`, {
   start_date: obj.start_date,

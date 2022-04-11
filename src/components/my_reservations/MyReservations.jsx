@@ -1,90 +1,63 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { v4 as uuidv4 } from 'uuid';
-import { getCars } from '../../redux/cars/car';
+import PropTypes from 'prop-types';
+import { NotificationContainer } from 'react-notifications';
 import {
-  deleteRental,
   getRental,
 } from '../../redux/myReservations/myReservations';
-import DeleteNotification from '../notifications/DeleteNotification';
+import Reservations from './Reservations';
 import BigSpinner from '../spinners/BigSpinner';
 import SmallSpinner from '../spinners/SmallSpinner';
+import { getUsers } from '../../redux/users/users';
 
-const MyReservations = () => {
+const MyReservations = ({ loggedIn, userId }) => {
   const dispatch = useDispatch();
-  const { isLoading, rentals, message } = useSelector((state) => state.myRentalsReducer);
-  const cars = useSelector((state) => state.carsReducer);
-
-  const findCar = (cars, rental) => {
-    const car = cars.find((car) => car.id === rental.car_id);
-    return car;
-  };
+  const { isLoading, rentals } = useSelector(
+    (state) => state.myRentalsReducer,
+  );
 
   useEffect(() => {
-    dispatch(getCars());
-  }, []);
+    dispatch(getRental(userId));
+  }, [dispatch, userId]);
 
   useEffect(() => {
-    dispatch(getRental());
-  }, []);
-
-  const convertDate = (date) => new Date(date).toLocaleString('en-US');
+    dispatch(getUsers());
+  }, [dispatch]);
 
   return (
-    <div className="m-2">
-      {message !== null && <DeleteNotification message={message} />}
-      <div className="text-right mb-2">
-        Cars rented:
-        {isLoading ? <SmallSpinner /> : rentals.length}
-      </div>
-      <ul>
-        {isLoading ? (
-          <BigSpinner />
-        ) : (
-          rentals.map((rental) => (
-            <li key={uuidv4()}>
-              <div className="mb-2">
-                <p>
-                  Car model:
-                  {findCar(cars, rental).model}
-                </p>
-                <img src={findCar(cars, rental).img_url} alt="" />
-                <p>
-                  Pick up date:
-                  {convertDate(rental.start_date)}
-                </p>
-                <p>
-                  Drop off date:
-                  {convertDate(rental.end_date)}
-                </p>
-                <p>
-                  Total price:
-                  {rental.price}
-                </p>
-                <button
-                  className="p-2 rounded bg-red-500 text-white"
-                  type="submit"
-                  onClick={() => {
-                    dispatch(deleteRental(rental.id));
-                  }}
-                >
-                  Cancel reservation
-                </button>
-                <Link
-                  to="/car"
-                  state={findCar(cars, rental)}
-                  className="border-solid border-2 border-dark p-2 bg-green-200"
-                >
-                  Show car details
-                </Link>
-              </div>
-            </li>
-          ))
-        )}
-      </ul>
-    </div>
+    <>
+      {loggedIn ? (
+        <div className="m-2">
+          <NotificationContainer />
+          <div className="text-right mb-2">
+            Cars rented:
+            {isLoading ? <SmallSpinner /> : rentals.length}
+          </div>
+          <ul>{isLoading ? <BigSpinner /> : <Reservations />}</ul>
+        </div>
+      ) : (
+        <>
+          <h1 className="mb-5">You are not logged in</h1>
+          <Link
+            to="/login"
+            className="border-solid border-2 border-dark p-2 bg-green-200"
+          >
+            Login
+          </Link>
+        </>
+      )}
+    </>
   );
+};
+
+MyReservations.propTypes = {
+  loggedIn: PropTypes.bool.isRequired,
+  userId: PropTypes.number,
+};
+
+MyReservations.defaultProps = {
+  userId: null,
 };
 
 export default MyReservations;
