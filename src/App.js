@@ -6,7 +6,6 @@ import Cars from './components/cars/Cars';
 import Reserve from './components/reserve/Reserve';
 import MyReservations from './components/my_reservations/MyReservations';
 import ShowCar from './components/cars/ShowCar';
-import './App.css';
 import { getCars } from './redux/cars/car';
 import Login from './components/users/Login';
 
