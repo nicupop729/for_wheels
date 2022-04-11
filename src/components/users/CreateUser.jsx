@@ -52,7 +52,7 @@ const CreateUser = ({ onSetLogin, onSetUserId, onSetUserName }) => {
 
   const newLocal = ' ';
   return (
-    <div className="bg-white container px-6 py-8 rounded shadow-md text-black w-full">
+    <div className="bg-white container px-6 py-8 rounded text-black w-full shadow-md hover:shadow-xl transition duration-700 ">
       <h4 className="mb-8 text-1xl text-center">
         New user? Please register here
       </h4>

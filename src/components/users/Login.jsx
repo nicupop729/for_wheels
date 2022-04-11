@@ -58,12 +58,12 @@ const Login = ({
   };
 
   return (
-    <div className="h-screen mt-16 bg-gray-400">
-      <div className="bg-gray-400 max-h-screen flex flex-col pt-16">
+    <div className="h-screen mt-16 bg-gray-100">
+      <div className="bg-gray-100 max-h-screen flex flex-col pt-16">
         <NotificationContainer />
         {loggedIn ? (
           <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
-            <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+            <div className="bg-white px-6 py-8 rounded text-black w-full shadow-md hover:shadow-xl transition duration-700 ">
               <h1 className="mb-8 text-3xl text-center">
                 Welcome to For Wheels
               </h1>
@@ -71,7 +71,7 @@ const Login = ({
               <NavLink
                 to="/"
                 onClick={logOutHandler}
-                className="p-2 rounded bg-red-500 text-white"
+                className="p-2 rounded bg-red-500 text-white hover:bg-red-700 hover:shadow-xl transition duration-700"
               >
                 Logout
               </NavLink>
@@ -79,7 +79,7 @@ const Login = ({
           </div>
         ) : (
           <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
-            <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+            <div className="bg-white px-6 py-8 rounded text-black w-full shadow-md hover:shadow-xl transition duration-700 ">
               <h1 className="mb-8 text-3xl text-center">
                 Welcome to For Wheels
               </h1>
