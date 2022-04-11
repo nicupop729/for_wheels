@@ -30,7 +30,7 @@ export const deleteRental = (rentalId) => (dispatch) => {
       dispatch({ type: CANCEL_RESERVATION, payload: { rentalId, data } });
       NotificationManager.error(data.message);
     } catch (error) {
-      console.log(error);
+      NotificationManager.error(error.message);
     }
   };
   fetchDeleteRental();

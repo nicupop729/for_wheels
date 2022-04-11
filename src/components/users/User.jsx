@@ -1,9 +1,15 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
 import { getUsers } from '../../redux/users/users';
+// import { postUser } from '../../redux/users/createUser';
+import CreateUser from './CreateUser';
 
 const User = ({ onSetLogin, onSetUserId }) => {
+  const navigate = useNavigate();
+
   const dispatch = useDispatch();
   const { users, status } = useSelector((state) => state.usersReducer);
   useEffect(() => {
@@ -19,7 +25,7 @@ const User = ({ onSetLogin, onSetUserId }) => {
     }
   }, [existingUser]);
 
-  const userSearchHandler = (e) => {
+  const setExistingUserHandler = (e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
       const { value } = e.target;
@@ -29,6 +35,7 @@ const User = ({ onSetLogin, onSetUserId }) => {
           ? { ...user, status, message: 'User account found' }
           : { status: 404, message: 'User not found, Please Register' },
       );
+      if (user !== undefined) setTimeout(() => navigate('/'), 2000);
     }
   };
 
@@ -46,9 +53,10 @@ const User = ({ onSetLogin, onSetUserId }) => {
           id="existing_user_input"
           type="text"
           placeholder="Enter your user account"
-          onKeyPress={userSearchHandler}
+          onKeyPress={setExistingUserHandler}
         />
       </form>
+      <CreateUser onSetLogin={onSetLogin} onSetUserId={onSetUserId} />
     </div>
   );
 };
