@@ -11,8 +11,14 @@ import { getCars } from './redux/cars/car';
 import Login from './components/users/Login';
 
 const App = () => {
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [userId, setUserId] = useState(null);
+  const dataFromLocal = JSON.parse(localStorage.getItem('currentUser'));
+
+  const [loggedIn, setLoggedIn] = useState(
+    dataFromLocal ? dataFromLocal.loggedIn : false,
+  );
+  const [userId, setUserId] = useState(dataFromLocal ? dataFromLocal.userId : null);
+
+  localStorage.setItem('currentUser', JSON.stringify({ loggedIn, userId }));
 
   const dispatch = useDispatch();
   useEffect(() => {
