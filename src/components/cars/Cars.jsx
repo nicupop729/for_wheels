@@ -5,7 +5,7 @@ import Car from './Car';
 const Cars = () => {
   const cars = useSelector((state) => state.carsReducer);
   return (
-    <div className="">
+    <div className="grid lg:grid-cols-3 md:grid-cols-2 xs:grid-cols-1">
       {cars.map((obj) => (
         <Car car={obj} key={obj.id} />
       ))}

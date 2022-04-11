@@ -5,37 +5,33 @@ import PropTypes from 'prop-types';
 const Car = ({ car }) => {
   const {
     model,
-    price,
+    description,
   } = car;
   const ImgUrl = car.img_url;
   return (
-    <div className="flex flex-col p-8 inline-block shadow-lg mb-4 mx-3">
-      <img src={ImgUrl} alt={`This is a${{ model }}`} />
-      <span>{model}</span>
-      <span>
-        Price:
-        {price}
-        {' '}
-        USD
-      </span>
-      <Link to="/car" state={car} className="border-solid border-2 border-dark p-6 bg-green-200">SHOW MORE</Link>
-    </div>
+    <Link to="/car" state={car}>
+      <div className="flex flex-col p-8 inline-block mb-6 mx-3 min-h-full shadow-md hover:shadow-xl transition duration-700">
+        <img src={ImgUrl} alt={`This is a${{ model }}`} className="max-h-80" />
+        <span className="text-2xl mt-3 mb-5 font-bold">{model}</span>
+        <span className="text-xs text-gray-400">{description}</span>
+      </div>
+    </Link>
   );
 };
 
 Car.defaultProps = {
   car: {
     model: '',
-    price: '',
     img_url: '',
+    description: '',
   },
 };
 
 Car.propTypes = {
   car: PropTypes.shape({
     model: PropTypes.string,
-    price: PropTypes.number,
     img_url: PropTypes.string,
+    description: PropTypes.string,
   }),
 };
 
