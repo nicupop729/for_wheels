@@ -14,6 +14,9 @@ const Reservations = () => {
   };
 
   const convertDate = (date) => new Date(date).toLocaleString('en-US');
+  const path = {
+    previous: '/my_reservations',
+  };
 
   return (
     <>
@@ -28,45 +31,48 @@ const Reservations = () => {
           </Link>
         </>
       ) : (
-        rentals.map((rental) => (
-          <li key={uuidv4()}>
-            <div className="mb-2">
-              <p>
-                Car model:
-                {findCar(cars, rental).model}
-              </p>
-              <img src={findCar(cars, rental).img_url} alt="" />
-              <p>
-                Pick up date:
-                {convertDate(rental.start_date)}
-              </p>
-              <p>
-                Drop off date:
-                {convertDate(rental.end_date)}
-              </p>
-              <p>
-                Total price:
-                {rental.price}
-              </p>
-              <button
-                className="p-2 rounded bg-red-500 text-white"
-                type="submit"
-                onClick={() => {
-                  dispatch(deleteRental(rental.id));
-                }}
-              >
-                Cancel reservation
-              </button>
-              <Link
-                to="/car"
-                state={findCar(cars, rental)}
-                className="border-solid border-2 border-dark p-2 bg-green-200"
-              >
-                Show car details
-              </Link>
-            </div>
-          </li>
-        ))
+        rentals.map((rental) => {
+          const car = findCar(cars, rental);
+          return (
+            <li key={uuidv4()}>
+              <div className="mb-2">
+                <p>
+                  Car model:
+                  {findCar(cars, rental).model}
+                </p>
+                <img src={findCar(cars, rental).img_url} alt="" />
+                <p>
+                  Pick up date:
+                  {convertDate(rental.start_date)}
+                </p>
+                <p>
+                  Drop off date:
+                  {convertDate(rental.end_date)}
+                </p>
+                <p>
+                  Total price:
+                  {rental.price}
+                </p>
+                <button
+                  className="p-2 rounded bg-red-500 text-white"
+                  type="submit"
+                  onClick={() => {
+                    dispatch(deleteRental(rental.id));
+                  }}
+                >
+                  Cancel reservation
+                </button>
+                <Link
+                  to="/car"
+                  state={{ car, path }}
+                  className="border-solid border-2 border-dark p-2 bg-green-200"
+                >
+                  Show car details
+                </Link>
+              </div>
+            </li>
+          );
+        })
       )}
     </>
   );
