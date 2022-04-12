@@ -8,6 +8,7 @@ import {
 } from 'react-notifications';
 import { getUsers } from '../../redux/users/users';
 import CreateUser from './CreateUser';
+import logo from '../../assets/for_wheels_white_text.png';
 
 const Login = ({
   onSetLogin,
@@ -58,15 +59,23 @@ const Login = ({
   };
 
   return (
-    <div className="h-screen mt-16 bg-gray-100">
+    <div className="h-screen mt-16 bg-gray-100 md:mt-0">
       <div className="bg-gray-100 max-h-screen flex flex-col pt-16">
         <NotificationContainer />
         {loggedIn ? (
           <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
             <div className="bg-white px-6 py-8 rounded text-black w-full shadow-md hover:shadow-xl transition duration-700 ">
-              <h1 className="mb-8 text-3xl text-center">
-                Welcome to For Wheels
+              <h1 className="text-3xl text-center">
+                Welcome to
+                <br />
+                For Wheels
               </h1>
+              <img
+                src={logo}
+                alt="logo"
+                className="h-48 rounded overflow-hidden mx-auto
+                my-4"
+              />
               <p className="mb-4">You are logged in!</p>
               <NavLink
                 to="/"
@@ -80,9 +89,17 @@ const Login = ({
         ) : (
           <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
             <div className="bg-white px-6 py-8 rounded text-black w-full shadow-md hover:shadow-xl transition duration-700 ">
-              <h1 className="mb-8 text-3xl text-center">
-                Welcome to For Wheels
+              <h1 className="text-3xl text-center">
+                Welcome to
+                <br />
+                For Wheels
               </h1>
+              <img
+                src={logo}
+                alt="logo"
+                className="h-48 rounded mx-auto
+                my-4"
+              />
               <h4 className="mb-8 text-1xl text-center">Already a user?</h4>
               <form>
                 <input

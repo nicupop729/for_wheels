@@ -19,9 +19,14 @@ const App = () => {
     dataFromLocal ? dataFromLocal.userId : null,
   );
 
-  const [userName, setUserName] = useState(dataFromLocal ? dataFromLocal.userName : '');
+  const [userName, setUserName] = useState(
+    dataFromLocal ? dataFromLocal.userName : '',
+  );
 
-  localStorage.setItem('currentUser', JSON.stringify({ loggedIn, userId, userName }));
+  localStorage.setItem(
+    'currentUser',
+    JSON.stringify({ loggedIn, userId, userName }),
+  );
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -41,7 +46,7 @@ const App = () => {
   };
 
   return (
-    <div className="mx-auto mt-8">
+    <div className="mx-auto mt-8 md:flex md:mt-0">
       <Sidebar
         onSetLogin={handleLogin}
         onSetUserId={handleUser}
@@ -49,7 +54,7 @@ const App = () => {
         loggedIn={loggedIn}
         userName={userName}
       />
-      <main className="text-sm text-center">
+      <main className="text-sm text-center md:flex-1">
         <Routes>
           <Route path="/" element={<Cars />} />
           <Route
