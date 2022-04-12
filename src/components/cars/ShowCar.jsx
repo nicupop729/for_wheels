@@ -48,7 +48,7 @@ const ShowCar = () => {
           </div>
         </div>
       </div>
-      <Link to={car.state.path.previous} className="absolute left-0 text-center z-0 rounded-tr-3xl rounded-br-3xl py-3 pr-10 pl-6 bg-green-400 mx-12 text-gray-700 font-bold hover:text-white transition duration-600">GO BACK</Link>
+      <Link to={car.state.path.previous} className="absolute left-0 text-center z-0 rounded-tr-3xl rounded-br-3xl py-3 pr-10 pl-6 bg-green-400 text-gray-700 font-bold hover:text-white transition duration-600">GO BACK</Link>
     </div>
   );
 };

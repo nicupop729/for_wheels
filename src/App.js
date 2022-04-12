@@ -8,6 +8,7 @@ import MyReservations from './components/my_reservations/MyReservations';
 import ShowCar from './components/cars/ShowCar';
 import { getCars } from './redux/cars/car';
 import Login from './components/users/Login';
+import Header from './components/header/Header';
 
 const App = () => {
   const dataFromLocal = JSON.parse(localStorage.getItem('currentUser'));
@@ -55,6 +56,7 @@ const App = () => {
         userName={userName}
       />
       <main className="text-sm text-center md:flex-1">
+        <Header />
         <Routes>
           <Route path="/" element={<Cars />} />
           <Route
