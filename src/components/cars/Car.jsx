@@ -8,8 +8,11 @@ const Car = ({ car }) => {
     description,
   } = car;
   const ImgUrl = car.img_url;
+  const path = {
+    previous: '/',
+  };
   return (
-    <Link to="/car" state={car} className="mb-5">
+    <Link to="/car" state={{ car, path }} className="mb-5">
       <div className="flex flex-col py-8 px-4 inline-block mx-3 min-h-full shadow-md hover:shadow-xl transition duration-700">
         <div className="relative h-0 pb-3/7 pt-1/4 flex-1 xl:mb-8">
           <img src={ImgUrl} alt={`This is a${{ model }}`} className="absolute inset-0 w-full h-full rounded-lg object-cover z-0" />
