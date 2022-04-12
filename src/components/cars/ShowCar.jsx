@@ -8,9 +8,9 @@ const ShowCar = () => {
     price,
   } = car.state;
   const ImgUrl = car.state.img_url;
-  console.log(car);
+
   return (
-    <div className="p-8">
+    <div className="p-8 relative">
       <div className="xl:flex relative mb-12 xl:mb-0">
         <div className="relative h-0 pb-2/5 flex-1 xl:mb-8">
           <img src={ImgUrl} alt={`This is a${{ model }}`} className="absolute inset-0 w-full h-full rounded-lg object-cover xl:pb-20 lg:pb-10 px-10 z-0" />
@@ -49,7 +49,7 @@ const ShowCar = () => {
           </div>
         </div>
       </div>
-      <Link to="/" className="absolute left-0 text-center z-0 rounded-tr-3xl rounded-br-3xl py-3 pr-10 pl-6 bg-green-400 mx-12 text-gray-700 font-bold hover:text-white transition duration-600">GO BACK</Link>
+      <Link to="/" className="absolute left-0 text-center z-0 rounded-tr-3xl rounded-br-3xl py-3 pr-10 pl-6 bg-green-400 text-gray-700 font-bold hover:text-white transition duration-600 xl:bottom-[-30%]">GO BACK</Link>
     </div>
   );
 };
