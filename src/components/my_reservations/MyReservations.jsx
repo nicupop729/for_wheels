@@ -31,8 +31,10 @@ const MyReservations = ({ loggedIn, userId }) => {
         <div className="m-2">
           <NotificationContainer />
           <div className="text-right mb-2">
-            Cars rented:
-            {isLoading ? <SmallSpinner /> : rentals.length}
+            <p className="text-xl">
+              Cars rented:
+              {isLoading ? <SmallSpinner /> : rentals.length}
+            </p>
           </div>
           <ul>{isLoading ? <BigSpinner /> : <Reservations />}</ul>
         </div>
