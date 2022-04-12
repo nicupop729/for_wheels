@@ -59,6 +59,17 @@ const App = () => {
         <Header />
         <Routes>
           <Route path="/" element={<Cars />} />
+
+          <Route
+            path="/reserve"
+            element={<Reserve loggedIn={loggedIn} userId={userId} />}
+          />
+          <Route
+            path="/my_reservations"
+            element={<MyReservations loggedIn={loggedIn} userId={userId} />}
+          />
+          <Route path="/car" element={<ShowCar loggedIn={loggedIn} />} />
+
           <Route
             path="/login"
             element={(
@@ -70,15 +81,6 @@ const App = () => {
               />
             )}
           />
-          <Route
-            path="/reserve"
-            element={<Reserve loggedIn={loggedIn} userId={userId} />}
-          />
-          <Route
-            path="/my_reservations"
-            element={<MyReservations loggedIn={loggedIn} userId={userId} />}
-          />
-          <Route path="/car" element={<ShowCar loggedIn={loggedIn} />} />
         </Routes>
       </main>
     </div>

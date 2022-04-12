@@ -59,8 +59,8 @@ const Login = ({
   };
 
   return (
-    <div className="h-screen mt-16 bg-gray-100 md:mt-0">
-      <div className="bg-gray-100 max-h-screen flex flex-col pt-16">
+    <div className="bg-gray-100 h-screen mt-16 md:mt-0 md:bg-white">
+      <div className="max-h-screen flex flex-col pt-16">
         <NotificationContainer />
         {loggedIn ? (
           <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
