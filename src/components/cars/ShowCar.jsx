@@ -43,7 +43,7 @@ const ShowCar = () => {
             </p>
             <div>
               <Link to="/" className="text-xs font-bold text-right hover:scale-105 transition duration-700 block mb-8">DISCOVER MORE MODELS</Link>
-              <Link to="/reserve" state={car.state} className="block text-center max-w-sm m-auto rounded-full py-3 bg-green-400 text-gray-700 font-bold hover:text-white transition duration-600">RESERVE</Link>
+              <Link to="/reserve" state={car.state.car} className="block text-center max-w-sm m-auto rounded-full py-3 bg-green-400 text-gray-700 font-bold hover:text-white transition duration-600">RESERVE</Link>
             </div>
           </div>
         </div>
