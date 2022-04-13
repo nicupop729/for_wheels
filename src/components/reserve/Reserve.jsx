@@ -107,7 +107,7 @@ const Reserve = ({ loggedIn, userId }) => {
                     <span>Price</span>
                     <span className="font-bold">
                       $
-                      {price}
+                      {price * 7 + 179 + 99}
                     </span>
                   </div>
                   <label htmlFor="StartDate" className="bg-white flex justify-between px-4 py-3">
