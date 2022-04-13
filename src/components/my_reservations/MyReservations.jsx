@@ -26,28 +26,32 @@ const MyReservations = ({ loggedIn, userId }) => {
   }, [dispatch]);
 
   return (
-    <>
+    <div className="px-10 mt-10">
       {loggedIn ? (
         <div className="m-2">
           <NotificationContainer />
           <div className="text-right mb-2">
-            Cars rented:
-            {isLoading ? <SmallSpinner /> : rentals.length}
+            <p className="text-xl">
+              Cars rented:
+              {isLoading ? <SmallSpinner /> : rentals.length}
+            </p>
           </div>
           <ul>{isLoading ? <BigSpinner /> : <Reservations />}</ul>
         </div>
       ) : (
-        <>
-          <h1 className="mb-5">You are not logged in</h1>
-          <Link
-            to="/login"
-            className="border-solid border-2 border-dark p-2 bg-green-200"
-          >
-            Login
-          </Link>
-        </>
+        <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2 mt-20">
+          <div className="bg-white px-6 py-8 rounded text-black w-full shadow-md hover:shadow-xl transition duration-700 ">
+            <p className="mb-10">You are not logged in</p>
+            <Link
+              to="/login"
+              className="block text-center max-w-sm m-auto rounded-full py-3 bg-green-400 text-gray-700 font-bold hover:text-white transition duration-600"
+            >
+              Login
+            </Link>
+          </div>
+        </div>
       )}
-    </>
+    </div>
   );
 };
 

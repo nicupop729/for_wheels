@@ -45,11 +45,35 @@ const Reserve = ({ loggedIn, userId }) => {
       obj.end_date += document.getElementById('EndHour').value;
     }
   };
+  const compareDates = () => {
+    const start = document.getElementById('StartDate').value;
+    const end = document.getElementById('EndDate').value;
+    if ((end.slice(0, 4) - start.slice(0, 4)) >= 0) {
+      if ((end.slice(5, 7) - start.slice(5, 7)) >= 0) {
+        if ((end.slice(8, 10) - start.slice(8, 10)) >= 0) {
+          return true;
+        }
+      }
+    }
+    return false;
+  };
+  const checkDate = () => {
+    const today = new Date().toISOString().slice(0, 10);
+    const date = document.getElementById('StartDate').value;
+    if ((date.slice(0, 4) - today.slice(0, 4)) >= 0) {
+      if ((date.slice(5, 7) - today.slice(5, 7)) >= 0) {
+        if ((date.slice(8, 10) - today.slice(8, 10)) >= 0) {
+          if (compareDates()) {
+            return true;
+          }
+        }
+      }
+    }
+    return false;
+  };
   const sendReservation = (e) => {
     e.preventDefault();
-    if (obj.start_date === '' || obj.end_date === '' || document.getElementById('StartHour').value === '' || document.getElementById('EndHour').value === '') {
-      NotificationManager.error('Please check date and time!', 'Somethiung went wrong!');
-    } else {
+    if (checkDate()) {
       getStartHour();
       getEndHour();
       dispatch(postReservation(obj));
@@ -61,6 +85,8 @@ const Reserve = ({ loggedIn, userId }) => {
       setTimeout(() => {
         navigate('/my_reservations');
       }, 3000);
+    } else {
+      NotificationManager.error('Please check date and time!', 'Somethiung went wrong!');
     }
   };
   return (
@@ -81,7 +107,7 @@ const Reserve = ({ loggedIn, userId }) => {
                     <span>Price</span>
                     <span className="font-bold">
                       $
-                      {price}
+                      {price * 7 + 179 + 99}
                     </span>
                   </div>
                   <label htmlFor="StartDate" className="bg-white flex justify-between px-4 py-3">
