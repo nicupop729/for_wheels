@@ -29,22 +29,6 @@ const Reserve = ({ loggedIn, userId }) => {
   const getEndDate = () => {
     obj.end_date = document.getElementById('EndDate').value;
   };
-  const getStartHour = () => {
-    if (obj.start_date === '') {
-      alert('Select start date first!');
-    } else {
-      obj.start_date += ' ';
-      obj.start_date += document.getElementById('StartHour').value;
-    }
-  };
-  const getEndHour = () => {
-    if (obj.end_date === '') {
-      alert('Select end date first!');
-    } else {
-      obj.end_date += ' ';
-      obj.end_date += document.getElementById('EndHour').value;
-    }
-  };
   const compareDates = () => {
     const start = document.getElementById('StartDate').value;
     const end = document.getElementById('EndDate').value;
@@ -71,11 +55,28 @@ const Reserve = ({ loggedIn, userId }) => {
     }
     return false;
   };
+  const formatTime = () => {
+    const start = document.getElementById('StartHour').value;
+    const end = document.getElementById('EndHour').value;
+    let newStart = '';
+    let newEnd = '';
+    if (start.slice(0, 2) > 12) {
+      newStart += `${(start.slice(0, 2) - 12)}:${start.slice(3, 5)} PM`;
+    } else {
+      newStart += `${start} AM`;
+    }
+    if (end.slice(0, 2) > 12) {
+      newEnd += `${(end.slice(0, 2) - 12)}:${end.slice(3, 5)} PM`;
+    } else {
+      newEnd += `${end} AM`;
+    }
+    obj.start_date += ` ${newStart}`;
+    obj.end_date += ` ${newEnd}`;
+  };
   const sendReservation = (e) => {
     e.preventDefault();
     if (checkDate()) {
-      getStartHour();
-      getEndHour();
+      formatTime();
       dispatch(postReservation(obj));
       NotificationManager.success('Redirecting you to your reservations.', 'Reservation Created!');
       document.getElementById('StartHour').value = '';
