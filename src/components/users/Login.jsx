@@ -43,10 +43,10 @@ const Login = ({
         user !== undefined ? { ...user, status } : { status: 404 },
       );
       if (user !== undefined) {
-        NotificationManager.success('User account found');
+        NotificationManager.success(`Logged in successfully! Welcome back, ${user.name}!`);
         setTimeout(() => navigate('/'), 2000);
       } else {
-        NotificationManager.error('User not found, Please Register');
+        NotificationManager.error('User account not found! Please Register');
       }
     }
   };
