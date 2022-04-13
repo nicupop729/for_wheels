@@ -77,7 +77,7 @@ const Sidebar = ({
       <div
         className={`top-0 left-0 w-[70vw] bg-gray-200  p-10 text-green-600 fixed h-full z-10 ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
-        } ease-in-out duration-300 md:w-[35vw] md:sticky md:h-[100vh] lg:w-[30vw] xl:w-[25vw]`}
+        } ease-in-out duration-300 md:w-[35vw] md:sticky md:h-[100vh] md:bg-white lg:w-[30vw] xl:w-[25vw]`}
       >
         <nav className="mt-20 text-1xl font-medium">
           <img
