@@ -10,7 +10,7 @@
 ![screenshot](./src/assets/screenshoots/front-page-desktop.png)
 ![screenshot](./src/assets/screenshoots/car-details-desktop.png)
 
-Rent one of a kind car, your dream car for **For Wheels**!!
+Rent one of a kind car, your dream car from **For Wheels**!!
 This SPA takes the information from the back-end API developed by us and, accordingly to the user interaction, consumes it and renders the data on the UI.
 
 ## Built With
@@ -24,7 +24,7 @@ This SPA takes the information from the back-end API developed by us and, accord
 [Live Demo Link](https://livedemo.com)
 
 ## Kanban Board
-Please hind Kandban board [here](https://github.com/users/nicupop729/projects/3);
+Please find Kandban board [here](https://github.com/users/nicupop729/projects/3);
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
