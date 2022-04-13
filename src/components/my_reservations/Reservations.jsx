@@ -23,7 +23,7 @@ const Reservations = () => {
       {!rentals.length ? (
         <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2 mt-20">
           <div className="bg-white px-6 py-8 rounded text-black w-full shadow-md hover:shadow-xl transition duration-700 ">
-            <p className="mb-10">No cars rented yet! Why not renting one?</p>
+            <p className="mb-10">No super cars rented yet! Why not renting one?</p>
             <Link
               to="/"
               className="block text-center max-w-sm m-auto rounded-full py-3 bg-green-400 text-gray-700 font-bold hover:text-white transition duration-600"

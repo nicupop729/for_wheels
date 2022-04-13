@@ -103,7 +103,7 @@ const Sidebar = ({
               </NavLink>
             </li>
           </ul>
-          <div className="fixed rounded bottom-0 left-[2.5%] h-40 w-[95%] mb-5 bg-white mx-auto flex flex-col justify-evenly items-center md:bg-gray-100">
+          <div className="fixed rounded bottom-0 left-[2.5%] h-40 w-[95%] mb-5 bg-white mx-auto flex flex-col justify-evenly items-center">
             {loggedIn ? (
               <>
                 <h3>

@@ -22,7 +22,7 @@ const Login = ({
   const { users, status } = useSelector((state) => state.usersReducer);
   useEffect(() => {
     dispatch(getUsers());
-  }, []);
+  }, [dispatch]);
 
   const [existingUser, setExistingUser] = useState({ status: '' });
 
@@ -43,10 +43,10 @@ const Login = ({
         user !== undefined ? { ...user, status } : { status: 404 },
       );
       if (user !== undefined) {
-        NotificationManager.success('User account found');
+        NotificationManager.success(`Logged in successfully! Welcome back, ${user.name}!`);
         setTimeout(() => navigate('/'), 2000);
       } else {
-        NotificationManager.error('User not found, Please Register');
+        NotificationManager.error('User account not found! Please Register');
       }
     }
   };
@@ -59,8 +59,8 @@ const Login = ({
   };
 
   return (
-    <div className="bg-gray-100 h-screen mt-16 md:mt-0 md:bg-white">
-      <div className="max-h-screen flex flex-col pt-16">
+    <div className="bg-gray-100 h-screen md:mt-0 md:bg-white">
+      <div className="flex flex-col">
         <NotificationContainer />
         {loggedIn ? (
           <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
