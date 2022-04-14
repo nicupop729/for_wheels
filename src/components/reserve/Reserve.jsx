@@ -21,7 +21,7 @@ const Reserve = ({ loggedIn, userId }) => {
     end_date: '',
     car_id: id,
     user_id: userId,
-    price,
+    price: price * 7 + 179 + 99,
   };
   const getStartDate = () => {
     obj.start_date = document.getElementById('StartDate').value;
