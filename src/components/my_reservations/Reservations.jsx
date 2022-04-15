@@ -7,10 +7,16 @@ const Reservations = () => {
   const dispatch = useDispatch();
   const { rentals } = useSelector((state) => state.myRentalsReducer);
   const cars = useSelector((state) => state.carsReducer);
+  const { users } = useSelector((state) => state.usersReducer);
 
   const findCar = (cars, rental) => {
     const car = cars.find((car) => car.id === rental.car_id);
     return car;
+  };
+
+  const findUser = (users, rental) => {
+    const user = users.find((user) => user.id === rental.user_id);
+    return user;
   };
 
   const convertDate = (date) => new Date(date).toLocaleString('en-US');
@@ -20,7 +26,7 @@ const Reservations = () => {
 
   return (
     <>
-      {!rentals.length ? (
+      {!rentals?.length ? (
         <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2 mt-20">
           <div className="bg-white px-6 py-8 rounded text-black w-full shadow-md hover:shadow-xl transition duration-700 ">
             <p className="mb-10">No super cars rented yet! Why not renting one?</p>
@@ -33,7 +39,7 @@ const Reservations = () => {
           </div>
         </div>
       ) : (
-        rentals.map((rental) => {
+        rentals?.map((rental) => {
           const car = findCar(cars, rental);
           return (
             <li
@@ -75,7 +81,7 @@ const Reservations = () => {
                 my-4 rounded-full py-3"
                 type="submit"
                 onClick={() => {
-                  dispatch(deleteRental(rental.id));
+                  dispatch(deleteRental(findUser(users, rental), rental.id));
                 }}
               >
                 Cancel reservation

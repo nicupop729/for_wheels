@@ -33,7 +33,7 @@ const MyReservations = ({ loggedIn, userId }) => {
           <div className="text-right mb-2">
             <p className="text-xl">
               Cars rented:
-              {isLoading ? <SmallSpinner /> : rentals.length}
+              {isLoading ? <SmallSpinner /> : rentals?.length}
             </p>
           </div>
           <ul>{isLoading ? <BigSpinner /> : <Reservations />}</ul>
