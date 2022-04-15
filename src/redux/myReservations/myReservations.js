@@ -13,17 +13,19 @@ export const getRental = (id) => (dispatch) => {
       const response = await fetch(`${baseUrl}/users/${id}/rentals`);
       const data = await response.json();
       dispatch({ type: GET_RENTALS_SUCCESS, payload: data.data });
+      return data;
     } catch (error) {
       dispatch({ type: GET_RENTALS_FAILURE, payload: error.message });
+      return error.message;
     }
   };
   fetchRental();
 };
 
-export const deleteRental = (rentalId) => (dispatch) => {
+export const deleteRental = (userId, rentalId) => (dispatch) => {
   const fetchDeleteRental = async () => {
     try {
-      const response = await fetch(`${baseUrl}/users/12/rentals/${rentalId}`, {
+      const response = await fetch(`${baseUrl}/users/${userId}/rentals/${rentalId}`, {
         method: 'DELETE',
       });
       const data = await response.json();
