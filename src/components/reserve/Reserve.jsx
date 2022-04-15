@@ -87,7 +87,7 @@ const Reserve = ({ loggedIn, userId }) => {
         navigate('/my_reservations');
       }, 3000);
     } else {
-      NotificationManager.error('Please check date and time!', 'Somethiung went wrong!');
+      NotificationManager.error('Please check date and time!', 'Something went wrong!');
     }
   };
   return (
