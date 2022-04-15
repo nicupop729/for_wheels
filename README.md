@@ -1,59 +1,67 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Project Name
+# FOR WHEELS
 
-> One paragraph statement about the project.
+> A SPA (single page application) for a luxury renting cars agency: For Wheels!
 
-![screenshot](./app_screenshot.png)
+![screenshot](./src/assets/screenshoots/front-page-mobile.png)
+![screenshot](./src/assets/screenshoots/sidebar-mobile.png)
+![screenshot](./src/assets/screenshoots/login-form-mobile.png)
+![screenshot](./src/assets/screenshoots/front-page-desktop.png)
+![screenshot](./src/assets/screenshoots/car-details-desktop.png)
 
-Additional description about the project and its features.
+Rent one of a kind car, your dream car from **For Wheels**!!
+This SPA takes the information from the back-end API developed by us and, accordingly to the user interaction, consumes it and renders the data on the UI.
 
 ## Built With
 
-- Major languages
-- Frameworks
-- Technologies used
+- Major languages: JavaScript
+- Frameworks: React
+- Technologies used: Tailwind, Redux 
 
-## Live Demo
+## Live Demo -not yet**
 
 [Live Demo Link](https://livedemo.com)
+
+## Kanban Board
+Please find Kandban board [here](https://github.com/users/nicupop729/projects/3);
+
+[Link to initial issue when Knaban Board was set](https://github.com/nicupop729/for_wheels_api/issues/20)
+
+Number of team members for this project: 2;
 
 
 ## Getting Started
 
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
-
-
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
-
+In order to run this project on your system, please make sure that you have installed all of the followings:
+ - IDE application
+ - node.js
+ - npm packages
+ - a web browser
 ### Setup
 
-### Install
+ - open your terminal and run the following command: `git clone https://github.com/nicupop729/for_wheels.git`;
+ - Run the command `cd for_wheels`;
+ - Run the command `npm install`;
+ - Run the command `npm start`;
 
-### Usage
-
-### Run tests
-
-### Deployment
-
-
+Once you completed this steps you should see the app running at: http://localhost:3000/ in your browser.
 
 ## Authors
 
-👤 **Author1**
+👤 **Jonathas Tavares**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [jonathastavares](https://github.com/jonathastavares)
+- LinkedIn: [Jonathas Tavares](https://www.linkedin.com/in/jonathas-tavares-24b8bba3/)
 
-👤 **Author2**
+👤 **Nicolae Pop**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [@nicupop729](https://github.com/nicupop729)
+- Twitter: [@nicupop729](https://twitter.com/nicupop729)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/nicolae-pop/)
 
 ## 🤝 Contributing
 
@@ -67,9 +75,8 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
+- Thanks to [Murat Korkmaz](https://www.behance.net/muratk) for the [UI design](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign).
+- Thanks to [Microverse](https://www.microverse.org/) for the fabulous environment to learn web development.
 
 ## 📝 License
 
