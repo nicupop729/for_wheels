@@ -19,9 +19,9 @@ This SPA takes the information from the back-end API developed by us and, accord
 - Frameworks: React
 - Technologies used: Tailwind, Redux 
 
-## Live Demo -not yet**
+## Live Demo
 
-[Live Demo Link](https://livedemo.com)
+[Live Demo Link](https://for-wheels.netlify.app/)
 
 ## Kanban Board
 Please find Kandban board [here](https://github.com/users/nicupop729/projects/3);
