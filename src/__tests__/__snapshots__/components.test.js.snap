@@ -1,0 +1,120 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests for React components rendering Tests Car component 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <a
+        class="mb-5"
+        href="/car"
+      >
+        <div
+          class="flex flex-col py-8 px-4 inline-block mx-3 min-h-full shadow-md hover:shadow-xl transition duration-700"
+        >
+          <div
+            class="relative h-0 pb-3/7 pt-1/4 flex-1 xl:mb-8"
+          >
+            <img
+              alt="This is a[object Object]"
+              class="absolute inset-0 w-full h-full rounded-lg object-cover z-0"
+              src="https://elitetraveler.com/wp-content/uploads/2019/07/Screen-Shot-2019-07-05-at-10.48.37-768x486.png"
+            />
+          </div>
+          <span
+            class="text-2xl mb-5 font-bold"
+          >
+            Aston Martin Valkyrie
+          </span>
+          <span
+            class="text-xs text-gray-400"
+          >
+            Valkyrie, its newest flagship, is a hybrid hypercar powered by an internal combustion engine. A bit of a head-scratcher, the battery pack services the vehicle’s electronics and integrates all relevant sub-systems while the V12 engine does the heavy lifting.
+          </span>
+        </div>
+      </a>
+    </div>
+  </body>,
+  "container": <div>
+    <a
+      class="mb-5"
+      href="/car"
+    >
+      <div
+        class="flex flex-col py-8 px-4 inline-block mx-3 min-h-full shadow-md hover:shadow-xl transition duration-700"
+      >
+        <div
+          class="relative h-0 pb-3/7 pt-1/4 flex-1 xl:mb-8"
+        >
+          <img
+            alt="This is a[object Object]"
+            class="absolute inset-0 w-full h-full rounded-lg object-cover z-0"
+            src="https://elitetraveler.com/wp-content/uploads/2019/07/Screen-Shot-2019-07-05-at-10.48.37-768x486.png"
+          />
+        </div>
+        <span
+          class="text-2xl mb-5 font-bold"
+        >
+          Aston Martin Valkyrie
+        </span>
+        <span
+          class="text-xs text-gray-400"
+        >
+          Valkyrie, its newest flagship, is a hybrid hypercar powered by an internal combustion engine. A bit of a head-scratcher, the battery pack services the vehicle’s electronics and integrates all relevant sub-systems while the V12 engine does the heavy lifting.
+        </span>
+      </div>
+    </a>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
